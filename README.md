@@ -266,7 +266,7 @@ colors_fare = ['red' if x else 'green' for x in fare_outliers]
 | Column | Outliers Found | Percentage | Range |
 |--------|---------------|------------|-------|
 | `age` | ~66 passengers | 7.4% | Outside 2.5-54.5 years |
-| `fare` | ~116 passengers | 13% | Above £65 (VIP tickets) |
+| `fare` | ~116 passengers | 13% | Above $65 (VIP tickets) |
 
 **Visualization:** Scatter plots with outliers highlighted in **red** for easy identification.
 
