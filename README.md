@@ -238,6 +238,43 @@ Min             0.42      0.00
 Max             80.00     512.33
 ```
 
+### **4. Outlier Detection with Scatter Plots**
+
+We used the **IQR (Interquartile Range) method** to detect outliers in numerical columns:
+
+```python
+# Outlier detection function using IQR method
+def get_outliers(series):
+    Q1 = series.quantile(0.25)
+    Q3 = series.quantile(0.75)
+    IQR = Q3 - Q1
+    lower = Q1 - 1.5 * IQR
+    upper = Q3 + 1.5 * IQR
+    return (series < lower) | (series > upper)
+
+# Visualize outliers with scatter plots
+age_outliers = get_outliers(df['age'])
+fare_outliers = get_outliers(df['fare'])
+
+# Color coding: Red = Outlier, Blue/Green = Normal
+colors_age = ['red' if x else 'blue' for x in age_outliers]
+colors_fare = ['red' if x else 'green' for x in fare_outliers]
+```
+
+**Outlier Analysis Results:**
+
+| Column | Outliers Found | Percentage | Range |
+|--------|---------------|------------|-------|
+| `age` | ~66 passengers | 7.4% | Outside 2.5-54.5 years |
+| `fare` | ~116 passengers | 13% | Above £65 (VIP tickets) |
+
+**Visualization:** Scatter plots with outliers highlighted in **red** for easy identification.
+
+**Decision:** We kept the outliers because:
+- Age outliers are real passengers (elderly travelers)
+- Fare outliers represent VIP/first-class passengers with expensive tickets
+- Removing them would lose valuable survival data
+
 ---
 
 ## 🛠️ Technologies Used
