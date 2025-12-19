@@ -6,7 +6,6 @@
 
 <p align="center">
   <b>A comprehensive exploratory data analysis of the Titanic dataset</b><br>
-  <i>My first step into the world of Data Science</i>
 </p>
 
 <p align="center">
