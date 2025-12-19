@@ -130,13 +130,13 @@ df.drop('alone', axis=1, inplace=True)          # Redundant with 'family_type'
 - `alive`: Same information as `survived` (just different format: "yes/no" vs 0/1)
 - `has_deck_info`: We created this to analyze deck importance, then removed it
 - `embarked`: Short code version, kept `embark_town` (full name) instead
-- `alone`: Redundant with `family_type` (Alone category provides same info)
+- `alone`: Redundant with `family_type` (Alone category provides the same info)
 
-### **Step 2: Handling Missing Ages (Smart Approach)**
+### **Step 2: Handling Missing Ages**
 
 ```python
 # Fill age with median grouped by passenger class and sex
-# This is smarter than using overall median because:
+# This is a better approach than using the overall median because:
 # - 1st class passengers tend to be older
 # - 3rd class passengers tend to be younger
 df['age'] = df['age'].fillna(
@@ -147,7 +147,7 @@ df['age'] = df['age'].fillna(
 **Why group by pclass and sex?**
 - 1st class passengers tend to be older (wealthier, established)
 - 3rd class passengers tend to be younger (immigrants, families)
-- This provides more accurate estimates than overall median
+- This provides more accurate estimates than the overall median
 
 ### **Step 3: Handling Missing Embark Town**
 
@@ -156,7 +156,7 @@ df['age'] = df['age'].fillna(
 print(df['embark_town'].value_counts())
 # Southampton: 644, Cherbourg: 168, Queenstown: 77
 
-# Fill with most common port (mode)
+# Fill with the most common port (mode)
 mode_embark_town = df['embark_town'].mode()[0]
 df['embark_town'].fillna(mode_embark_town, inplace=True)
 ```
@@ -171,7 +171,7 @@ duplicates = df.duplicated().sum()
 print(f"--- Duplicate Rows: {duplicates} ---")  # Found 118 duplicates
 ```
 
-**Note:** 118 duplicate rows found. These are passengers with identical data - could be family members with same ticket or data entry duplicates. We kept them for analysis but noted their presence.
+**Note:** 118 duplicate rows found. These are passengers with identical data - could be family members with the same ticket or data entry duplicates. We kept them for analysis but noted their presence.
 
 ---
 
@@ -278,7 +278,7 @@ git clone https://github.com/YOUR_USERNAME/titanic-analysis.git
 cd titanic-analysis
 ```
 
-### **2. Create virtual environment**
+### **2. Create a virtual environment**
 
 ```bash
 python -m venv venv
@@ -337,34 +337,4 @@ titanic-analysis/
 - ✅ Categorizing continuous variables
 - ✅ Using `apply()` with custom functions
 
-### **Python/Pandas Skills:**
-- ✅ `df.isnull().sum()` - Count missing values
-- ✅ `df.groupby()` - Group data for analysis
-- ✅ `df.drop()` - Remove columns
-- ✅ `df.fillna()` - Fill missing values
-- ✅ `df.describe()` - Statistical summary
-
 ---
-
-## 🔮 Future Improvements
-
-- [ ] Add data visualizations (survival charts)
-- [ ] Perform correlation analysis
-- [ ] Build a prediction model (Machine Learning)
-- [ ] Create an interactive dashboard
-
----
-
-## 📬 Contact
-
-If you have any questions or suggestions, feel free to reach out!
-
----
-
-<p align="center">
-  <b>⭐ If you found this project helpful, please give it a star! ⭐</b>
-</p>
-
-<p align="center">
-  Made with ❤️ as my first Data Science project
-</p>
