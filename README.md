@@ -275,6 +275,9 @@ colors_fare = ['red' if x else 'green' for x in fare_outliers]
 - Fare outliers represent VIP/first-class passengers with expensive tickets
 - Removing them would lose valuable survival data
 
+### Outlier Detection Visualization
+![Scatter Plot](<images/Scatter_plot.png>)
+
 ---
 
 ## 🛠️ Technologies Used
