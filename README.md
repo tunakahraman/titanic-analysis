@@ -33,7 +33,7 @@
 
 ## 🎯 About the Project
 
-This is my **first data science project** where I explore the famous Titanic dataset. The goal is to understand the factors that influenced passenger survival rates through data cleaning, exploration, and analysis.
+In this project, I explore the famous Titanic dataset. The goal is to understand the factors that influenced passenger survival rates through data cleaning, exploration, and analysis.
 
 ### **Project Goals:**
 - ✅ Learn data cleaning techniques
